@@ -1,7 +1,7 @@
 /*
 Problem statement:
 
-Rotate a matrix 90 degree clockwise
+Rotate a matrix 90 degree clockwise.
 
 */
 
