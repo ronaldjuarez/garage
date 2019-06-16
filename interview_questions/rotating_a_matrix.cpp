@@ -1,3 +1,10 @@
+/*
+Problem statement:
+
+Rotate a matrix 90 degree clockwise
+
+*/
+
 #include <iostream>
 #include <vector>
 using namespace std;

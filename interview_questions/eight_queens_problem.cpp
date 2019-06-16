@@ -1,3 +1,7 @@
+/*
+Find all the combinations of placing a 8 queens in a chess board
+*/
+
 #include <vector>
 #include <iostream>
 #include <cmath>
