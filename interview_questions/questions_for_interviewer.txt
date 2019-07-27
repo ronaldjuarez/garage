@@ -1,0 +1,89 @@
+start to check issues on fb 
+
+fake news
+fake accounts 
+
+
+
+- In retrospective, what would you have like to know before joining [company]?
+- what does your typical day looks like ? 
+- How would you describe the work atmosphere of [company]?
+- what is your favorite part of working on [company]?
+- are there learning opportunities for current employers, like someone who knows only knows front end can learn about back end
+  or even going further, other skills like marketing or graphic design?
+- what is the main difference that you see working on fb in comparison to your former companies?
+
+- is there anything extra that I can provide you with that would be helpful?
+
+
+### FOR PROBLEMS
+- How is this array given, in memory, in array, 
+- is it ordered? 
+- does it have repeating elements?
+- the nature of the numbers? integers, floats, are there in any range?
+- does the input fit in memory?
+- what is the one the biggest challenges that the company is having in regards of Artifical Intelligence? 
+
+
+
+
+
+
+
+- STRENGTHS 
+	- Willing to learn
+	- Problem solving skills
+	- My ability to convey ideas and leadership
+	
+- WEAKNESSES 
+	- Sometimes I spend too much in unnecessary steps. But I am working on that. Make it work, then make it pretty
+	- I tend to switch from activities (writting code for 20 minutes, reading an article, going for a coffee, going back to the code), 
+		- I am working on that, setting times, pomodoro method, that tells you to lock 25 min for work and 2 to 5 minutes to take a break.
+	- I need to work on my scope, 
+	- I would like to be morning person 
+	
+		
+	
+- Tools of ML
+		- Deep Text: to extract meaning of words from a context
+		- Deep Face: For facial recognition (97%)
+		- Targeted advertising
+		- FLOW: Tool that runs 300K ML models 
+		- Torch is GPU optimized for ConvNets CUDA kernels
+		- AI labs Facebook Artificial Intelligence Research
+		- Yan Lecunn	
+		
+		- Automatically generating audio descriptions of pictures 
+		- Automatic challenges 
+		
+		- Torch has better support than GPUs
+
+		
+33) Mention five benefits of using Python?
+
+Python comprises of a huge standard library for most Internet platforms like Email, HTML, etc.
+Python does not require explicit memory management as the interpreter itself allocates the memory to new variables and free them automatically
+Provide easy readability due to use of square brackets
+Easy-to-learn for beginners
+Having the built-in data types saves programming time and effort from declaring variables
+Libraries
+
+
+
+from itertools import groupby
+import collections
+
+import collections
+a = [1,1,1,1,2,2,2,2,3,3,4,5,5]
+>>> collections.Counter(a)
+# Counter({1: 4, 2: 4, 3: 2, 5: 2, 4: 1})	
+>> a.count(1)
+# 4 
+
+
+
+		
+	
+	
+	
+	

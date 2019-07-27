@@ -1,0 +1,52 @@
+What is your greatest weaknases? 
+
+One of my greatest weaknease in which I am working on right is that I spend to much in details, and don't 
+
+my advisor and mentor recomend me 
+
+make it work, then make it pretty .
+
+also I spend my time double or triple checking what I did
+
+
+questions for the interviewer?
+==============================
+
+Is there anything you would've liked to know before starting to work at FB?
+
+can you tell me a little bit about the demographics of the company?
+
+did you do an internship? if so, was it harder to maintain your position as an intern or as a first year software developer?
+
+
+ 
+ research about the products isssues, scandals, etc.
+ 
+ 
+ passion questions
+ have you had the chance to work directly with Yan Lecunn ? 
+is he involved in all the projects?
+
+
+PROJECT
+
+BRAIN OCT CANCER
+VERY INTERDISCIPLINARY 
+	- Clinical Part = Physicians
+	- Instrumentation = Physics, Optical Engineer, Electrical Engineers
+	
+
+	
+Pitch of my person:
+
+My name is Ronald, I am currently working as a data scientist and as a phd student in the department of biomedical engineering,
+more specifically I work with machine learning applied to medical imaging diagnosis. My project is about brain cancer diagnosis using 
+machine learning techniques. 
+
+I did my undergrad in my home country Peru in Computer Science, and before coming to Unite states I work mainly and mostly at the
+same time as Software Engineer and Computer Scientist for around 5 years 
+
+I sort my spare time between video games, my guitar or dancing 
+
+
+	

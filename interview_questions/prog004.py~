@@ -1,0 +1,65 @@
+import time
+
+# MERGESORT
+
+# Input
+
+v = [17, 87, 6 ,22, 41, 3, 13, 54]
+
+# End Input
+
+
+t_start = time.time()
+
+# your functions here
+
+c = countSteps_bottom_up(n,x)
+# End of your functions
+
+
+def mergesort(v):
+    ms(v,0,len(v)-1)
+
+def ms(v, start, end):
+    if start < end:
+        middle = start + end // 2
+        ms(v, start, middle)
+        ms(v, middle + 1, end)
+        merge(v, start, middle, end)
+
+def merge(v, start, middle, end):
+    L = v[start:middle]
+    R = v[middle+1:end]
+
+    length_L = len(L)
+    length_R = len(R)
+
+    i = 0
+    j = 0
+    k = 0
+    
+    while i < length_L and j = 
+    
+
+
+# your runs here
+
+
+
+# end of your runs
+
+
+
+
+
+t_end = time.time()
+t_elapsed =  t_end - t_start
+
+
+
+# Print Results Here
+
+print(c)
+print ("Elapsed time: ", t_elapsed, " seconds")
+
+# End print Results

@@ -1,0 +1,9 @@
+I know hololens is a holographic computer for augmented reality, the application spectrum is quite wide
+	from entertaining, designing, developing, remote assistance,
+
+For me, I see a lot of potential in medical imaging, for application in computer aided diagnosis, for guidance during surgery
+
+
+Data of hololens
+	-  HoloLens also uses 32 bit Intel architecture and a Holographic Processing Unit (HPU) 
+	-   Bluetooth and Wi-Fi connectivity
