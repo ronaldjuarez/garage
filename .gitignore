@@ -1,3 +1,4 @@
 *.exe
 .vscode/
 *.pdf
+!interview_questions/CCI_6th_2015.pdf
