@@ -40,9 +40,54 @@ NodeLinkedList::NodeLinkedList(Node* value){
     m_key = value;
     m_next = nullptr;
 }
-void createLinkedLists(std::vector<NodeLinkedList*> linkedLists, Node* root){
-    int size = linkedLists.size();
-    if (size == 
+
+void addLinkedList(NodeLinkedList* list, Node* node){
+    NodeLinkedList* ptrTemp = list;
+    while (ptrTemp->m_next != nullptr){
+        ptrTemp = ptrTemp->m_next;
+    }
+    ptrTemp->m_next = new NodeLinkedList(node);
+}
+
+void createLinkedLists(std::vector<NodeLinkedList*> &linkedLists, Node* node, int level){
+    
+    if (node == nullptr) return; // base case
+    
+    NodeLinkedList* linkedList = nullptr;
+    if (linkedLists.size() == level){
+        linkedList = new NodeLinkedList(node);
+        linkedLists.push_back(linkedList);
+    }
+    else{
+        linkedList = linkedLists[level];
+    }
+
+    addLinkedList(linkedList, node);
+    createLinkedLists(linkedLists, node->m_left, level+1);
+    createLinkedLists(linkedLists, node->m_right, level+1);
+}
+std::vector<NodeLinkedList*> createLinkedLists(Node* root){
+    std::vector<NodeLinkedList*> linkedLists;
+    createLinkedLists(linkedLists, root, 0);
+    return linkedLists;
+}
+
+void printLinkedList(NodeLinkedList* node){
+    NodeLinkedList* ptrTemp = node;
+    while (ptrTemp != nullptr){
+        std::cout << ptrTemp->m_key->m_key << " ";
+        ptrTemp = ptrTemp->m_next;
+    }
+}
+
+void printLinkedLists(std::vector<NodeLinkedList*> list){
+    int size = list.size();
+    for (int i = 0; i < size; i++){
+        std::cout << "List[" << i << "]: ";
+        printLinkedList(list[i]);
+        std::cout << std::endl;
+    }
+    
 }
 int main(){
     std::vector<NodeLinkedList*> linkedLists;
@@ -53,6 +98,7 @@ int main(){
     insert(root, 70); 
     insert(root, 60); 
     insert(root, 80);
-    createLinkedLists(linkedLists, root);
+    linkedLists = createLinkedLists(root);
+    printLinkedLists(linkedLists);
     return 0;
 }
