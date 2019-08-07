@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <vector>
 class Node{
     public:
         Node(int value);
@@ -20,7 +20,7 @@ Node::Node(int value){
 
 bool Node::isLeaf(){
     if (this == nullptr) return false;
-    if (m_left == nullptr || m_right == nullptr) return true;
+    if (m_left == nullptr && m_right == nullptr) return true;
     return false;
 }
 
@@ -35,6 +35,9 @@ class Tree{
         int getHeight();
         int checkHeight();
         bool isBST();
+        bool isBST2();
+        bool isBST3();
+        bool isBST4();
         Node* search(int key);
         Node* inOrderSuccessor(int value);
     private:
@@ -45,6 +48,9 @@ class Tree{
         bool checkBalancedRecursive(Node* node);
         std::pair<bool,int> checkHeightRecursive(Node* node);
         bool isBSTRec(Node* node);
+        void isBSTRec2(Node* node, std::vector<Node*> &nodes);
+        bool isBSTRec3(Node* node, Node* &lastPrinted);
+        bool isBSTRec4(Node* node, Node* const &min, Node* const &max);
         Node* searchRec(Node* node, int value);
         Node* inOrderSuccessor(Node* node, int key);
 };
