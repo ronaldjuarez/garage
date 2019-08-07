@@ -117,8 +117,8 @@ int main() {
 	tree.insert(75);
 	tree.insert(45);
 	tree.insert(47);
-	//tree.insert(13);
-	//tree.insert(35);
+	tree.insert(13);
+	tree.insert(35);
 
 	//TreeNode* node = tree.search(47);
 	//node->m_key = 65;
