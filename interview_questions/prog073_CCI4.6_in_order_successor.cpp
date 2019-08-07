@@ -120,8 +120,8 @@ int main() {
 	tree.insert(13);
 	tree.insert(35);
 
-	TreeNode* node = tree.search(47);
-	node->m_key = 65;
+	//TreeNode* node = tree.search(47);
+	//node->m_key = 65;
 
 	tree.print();
 	std::cout << std::endl << tree.findInOrderSuccesor(30)->m_key << std::endl;
