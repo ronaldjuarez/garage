@@ -4,6 +4,7 @@
 #include <iostream> 
 #include <map>
 #include <vector>
+#include <algorithm>
 using namespace std; 
   
 // Maximum number of digits in  
@@ -87,17 +88,56 @@ void print(const vector<int> & v){
     std::cout << std::endl;
 }
 
-void modify(const vector<int> & v){
+void modify(vector<int> & v){
     v[1] = 1000;
 }
+
+struct comparator{
+    bool operator()(const int& i, const int& j) {
+        return i > j;
+    }
+};
   
+class Test { 
+    int value; 
+public: 
+    Test(int v = 0) {value = v;} 
+
+    int getValue() const {return value;}   
+    void setValue(int v);
+}; 
+
+void Test::setValue(int v ) {
+    value = v;
+}
 // Driver program 
 int main() { 
 
-    std::vector<int> vv({1,2,3});
+    //std::vector<int> vv({3,4,7,8,9,9,10,13,15,20});
+    std::vector<int> vv({44,33,77,11,55,88,66});
+
+    std::make_heap(vv.begin(), vv.end());
     print(vv);
-    modify(vv);
+    std::cout << vv.front() << endl;
+    std::pop_heap(vv.begin(),vv.end()); vv.pop_back();
+    std::cout << vv.front() << endl;
     print(vv);
+    std::pop_heap(vv.begin(),vv.end()); vv.pop_back();
+    std::cout << vv.front() << endl;
+    print(vv);
+    std::pop_heap(vv.begin(),vv.end()); vv.pop_back();
+    std::cout << vv.front() << endl;
+    print(vv);
+    
+    std::pop_heap(vv.begin(),vv.end()); vv.pop_back();
+    std::cout << vv.front() << endl;
+    print(vv);
+
+    std::pop_heap(vv.begin(),vv.end()); vv.pop_back();
+    std::cout << vv.front() << endl;
+    print(vv);
+
+
     /*
     int exponent = 100; 
     int base = 20; 
