@@ -3,6 +3,7 @@
 // factorial of big numbers 
 #include <iostream> 
 #include <map>
+#include <vector>
 using namespace std; 
   
 // Maximum number of digits in  
@@ -77,10 +78,27 @@ void power(int x, int n)
     for (int i = res_size - 1; i >= 0; i--) 
         cout << res[i]; 
 } 
+
+void print(const vector<int> & v){
+    int size = v.size();
+    for(int i = 0; i< size; i++){
+        std::cout << v[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+void modify(const vector<int> & v){
+    v[1] = 1000;
+}
   
 // Driver program 
 int main() { 
 
+    std::vector<int> vv({1,2,3});
+    print(vv);
+    modify(vv);
+    print(vv);
+    /*
     int exponent = 100; 
     int base = 20; 
     //power(base, exponent); 
@@ -93,6 +111,6 @@ int main() {
         cout << "This is true" << endl;
     else   
         cout << "this is false" << endl;
-
+     */
     return 0; 
 } 
