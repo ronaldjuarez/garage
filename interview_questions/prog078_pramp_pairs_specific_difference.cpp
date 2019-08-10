@@ -2,21 +2,20 @@
 #include <vector>
 #include <map>
 
-std::vector<std::vector< int> > findPairsWithGivenDifference(const std::vector<int> &arr, int k) {
+std::vector<int> twoSum(std::vector<int>& nums, int target) {
 	std::map<int, int> m;
-	std::vector<std::vector<int> > result;
-	int size = arr.size();
-
+	std::vector<int> result;
+	int size = nums.size();
 	for (int i = 0; i < size; i++) {
-		m[arr[i] - k] = arr[i];
+		m[nums[i]] = i;
 	}
 
 	for (int i = 0; i < size; i++) {
-		if (m.count(arr[i])) {
-			std::vector<int> item;
-			item.push_back(m[arr[i]]);
-			item.push_back(arr[i]);
-			result.push_back(item);
+		int complement = target - nums[i];
+		if (m.count(complement) && m[complement] != i) {
+			result.push_back(i);
+			result.push_back(m[complement]);
+			break;
 		}
 	}
 	return result;
