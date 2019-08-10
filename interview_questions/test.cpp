@@ -5,6 +5,7 @@
 #include <map>
 #include <vector>
 #include <algorithm>
+#include <set>
 using namespace std; 
   
 // Maximum number of digits in  
@@ -110,10 +111,9 @@ public:
 void Test::setValue(int v ) {
     value = v;
 }
-// Driver program 
-int main() { 
 
-    //std::vector<int> vv({3,4,7,8,9,9,10,13,15,20});
+void test4(){
+        //std::vector<int> vv({3,4,7,8,9,9,10,13,15,20});
     std::vector<int> vv({44,33,77,11,55,88,66});
 
     std::make_heap(vv.begin(), vv.end());
@@ -137,7 +137,34 @@ int main() {
     std::cout << vv.front() << endl;
     print(vv);
 
+}
 
+void test10(){
+    std::set<int> s; 
+    s.insert(5);
+    s.insert(7);
+    s.insert(10);
+    s.insert(2);
+    s.insert(7);
+    s.insert(3);
+
+    std::set<int>::iterator itr;
+
+    for (itr = s.begin(); itr != s.end(); ++itr){
+        std::cout << *itr << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << s.count(7) << std::endl;   
+    std::cout << s.count(8) << std::endl;
+
+}
+// Driver program 
+int main() { 
+
+
+    
+    test10();
     /*
     int exponent = 100; 
     int base = 20; 
