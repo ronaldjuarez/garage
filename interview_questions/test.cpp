@@ -3,6 +3,7 @@
 // factorial of big numbers 
 #include <iostream> 
 #include <map>
+#include <unordered_map>
 #include <vector>
 #include <algorithm>
 #include <set>
@@ -159,12 +160,39 @@ void test10(){
     std::cout << s.count(8) << std::endl;
 
 }
+
+void test11(){
+    std::unordered_map<int,int> m;
+
+    m[2] = 3;
+    m[1] = 5;
+    m[3] = 4;
+
+    std::unordered_map<int,int>::iterator itr;
+
+    for(itr = m.begin(); itr != m.end(); itr++){
+        std::cout << itr->first << " " << itr->second << std::endl;
+    }
+
+    std::map<int,int> mm;
+
+    mm[2] = 3;
+    mm[1] = 5;
+    mm[3] = 4;
+
+    std::map<int,int>::iterator itr2;
+
+    for(itr2 = mm.begin(); itr2 != mm.end(); itr2++){
+        std::cout << itr2->first << " " << itr2->second << std::endl;
+    }
+
+}
 // Driver program 
 int main() { 
 
 
     
-    test10();
+    test11();
     /*
     int exponent = 100; 
     int base = 20; 
