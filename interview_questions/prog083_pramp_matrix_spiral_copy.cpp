@@ -21,6 +21,7 @@ std::vector<int> spiralCopy(const std::vector<std::vector<int> >& inputMatrix){
         }
 
         //bottom = m[nr-1-layer][nc-1-layer:-1:1+layer]
+        for(int c= nc-1-layer; )
 
     }
 
