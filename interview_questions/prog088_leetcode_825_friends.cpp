@@ -4,11 +4,26 @@
 using namespace std;
 
 int numFriendRequests(vector<int>& ages) {
-    int size = ages.size();
-
-    for ( int i = size - 1; i)
+        int res = 0;
+        int numInAge[21] = {0};
+        int sumInAge[21] = {};
+        
+        for(int i : ages) 
+            numInAge[i] ++;
+        
+        for(int i = 1; i <= 120; ++i) 
+            sumInAge[i] = numInAge[i] + sumInAge[i - 1];
+        
+        for(int i = 15; i <= 120; ++i) {
+            if(numInAge[i] == 0) continue;
+            int count = sumInAge[i] - sumInAge[i / 2 + 7];
+            res += count * numInAge[i] - numInAge[i]; //people will not friend request themselves, so  - numInAge[i]
+        }
+        return res;
 }
 
 int main(){
+    vector<int> v1{16,17,18};
+    cout << numFriendRequests(v1) << endl;
     return 0;
 }
