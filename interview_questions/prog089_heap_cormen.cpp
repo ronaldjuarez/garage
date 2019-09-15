@@ -4,6 +4,7 @@
 class Heap_Cormen {
 public:
 	void build_min_heap(std::vector<int> vector);
+	void print();
 private:
 	std::vector<int> arr;
 	int parent(int i);
@@ -12,9 +13,16 @@ private:
 	void min_heapify(int i);
 };
 
-void Heap_Cormen::build_min_heap(std::vector<int> vector)
+void Heap_Cormen::build_min_heap(std::vector<int> v)
 {
-	
+	arr.resize(v.size());
+	for (int i = 0 ; i < v.size(); i++){
+		arr[i] = v[i];
+	}
+	int size = arr.size();
+	for (int i = size/2; i >= 0; i--){
+		min_heapify(i);
+	}	
 }
 
 int Heap_Cormen::parent(int i) {
@@ -61,6 +69,18 @@ void Heap_Cormen::min_heapify(int i) {
 	}
 }
 
+void Heap_Cormen::print(){
+	int size = arr.size();
+	for (int i = 0; i < size; i++){
+		std::cout << arr[i] << " " ;	
+	}
+	std::cout << std::endl;
+}
+
 int main() {
+	std::vector<int> v{44,33,77,11,88,66,55};
+	Heap_Cormen h;
+	h.build_min_heap(v);
+	h.print();
 	return 0;
 }

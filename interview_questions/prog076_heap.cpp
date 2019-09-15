@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <limits>
+#include "helper.h"
 
 class Heap {
 public:
@@ -22,7 +23,7 @@ int Heap::top() {
 	return arr[0];
 }
 int Heap::pop() {
-	if (arr.size() == 0) return INT_MIN;
+	if (arr.size() == 0) return -999999;
 	int r = arr[0];
 	remove(0);
 	return r;
@@ -90,6 +91,18 @@ void Heap::insert(int value) {
 	heapify(arr.size()-1);
 }
 
+void heapsort(std::vector<int> &v){
+	Heap h;
+	int size = v.size();
+	for (int i = 0; i < size; i++){
+		h.insert(v[i]);
+	}
+
+	for (int i = 0; i < size; i++){
+		v[i] = h.pop();
+	}
+}
+
 int main(){
     Heap h;
     h.insert(44);
@@ -100,5 +113,8 @@ int main(){
     h.insert(88);
     h.insert(66);
     h.print();  
+	std::vector<int> v{44,33,77,11,55,88,66};
+	heapsort(v);
+	print1D(v);
     return 0;
 }
