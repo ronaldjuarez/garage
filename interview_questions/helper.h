@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <climits>
 
 void print1D(const std::vector<int> &v){
     int n = v.size();
@@ -184,4 +185,54 @@ void Heap_Cormen::print(){
 		std::cout << arr[i] << " " ;	
 	}
 	std::cout << std::endl;
+}
+
+class PriorityQueue{
+public:
+    void insert(int value);
+    int minimum(); // top
+    int extract_min(); // pop
+    void print();
+private:
+    void decrease_key(int i,int key); 
+    Heap_Cormen h;
+    int parent(int i);
+};
+
+void PriorityQueue::print(){
+    h.print();
+}
+
+int PriorityQueue::parent(int i){
+    return (i - 1) / 2;
+}
+
+int PriorityQueue::minimum(){
+    return h.arr[0];
+}
+
+int PriorityQueue::extract_min(){
+    int size = h.arr.size();
+    if (size == 0) return -99999;
+    int min = h.arr[0];
+    h.arr[0] = h.arr[h.arr.size()-1];
+    h.arr.pop_back();
+    h.min_heapify(0);
+    return min;
+}
+
+void PriorityQueue::decrease_key(int i,int key){
+    if (key > h.arr[i])
+        return;
+    h.arr[i] = key;
+    while (i > 0 && h.arr[parent(i)] > h.arr[i]){
+        std::swap(h.arr[parent(i)], h.arr[i]);
+        i = parent(i);
+    }
+}
+
+void PriorityQueue::insert(int key){
+    int newValue = INT_MAX;
+    h.arr.push_back(newValue);
+    decrease_key(h.arr.size()-1, key);
 }
