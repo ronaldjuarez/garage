@@ -187,12 +187,45 @@ void test11(){
     }
 
 }
+
+struct Node{
+    int x;
+    Node(int i): x(i) {}
+};
+void test12_f(Node* n){
+    Node vv(3);
+    std::cout << n << std::endl;
+    *n = vv;
+    std::cout << n->x << std::endl;
+}
+void test12(){
+    Node* n = new Node(2);
+    Node* nn = n;
+    std::cout << n << std::endl; 
+    std::cout << nn << std::endl; 
+    std::cout << &n << std::endl; 
+    std::cout << &nn << std::endl; 
+    Node* nnn = nullptr;
+    Node* nnnn = NULL;
+    
+    if (nnn == nnnn){
+        std::cout << "YEE-HAW" << std::endl;
+    }
+
+    if ( nnn != nullptr){
+        std::cout << "not initialized" << std::endl;
+    }
+    std::cout << &nnn << std::endl; 
+    test12_f(nnn);
+
+}
+
 // Driver program 
 int main() { 
 
 
     
-    test11();
+    test12();
     /*
     int exponent = 100; 
     int base = 20; 
