@@ -69,21 +69,6 @@ Having the built-in data types saves programming time and effort from declaring 
 Libraries
 
 
-
-from itertools import groupby
-import collections
-
-import collections
-a = [1,1,1,1,2,2,2,2,3,3,4,5,5]
->>> collections.Counter(a)
-# Counter({1: 4, 2: 4, 3: 2, 5: 2, 4: 1})	
->> a.count(1)
-# 4 
-
-
-
-		
-	
 	
 	
 	
