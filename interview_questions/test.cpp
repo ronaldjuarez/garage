@@ -7,6 +7,7 @@
 #include <vector>
 #include <algorithm>
 #include <set>
+#include <cmath>
 using namespace std; 
   
 // Maximum number of digits in  
@@ -220,12 +221,50 @@ void test12(){
 
 }
 
+void test13(){
+    const int a2 = 20;
+    const int * b2 = &a2;
+    int *d2 = (int *) (b2);
+    *d2 = 30;
+    std::cout <<  a2 << std::endl;
+    std::cout << *d2 << std::endl;
+}
+
+void test14(){
+    struct myStruct{
+        int x;
+        int y;
+        char c;
+        bool b;
+    };
+    myStruct s; 
+    s.x = 5; s.y = 10; s.c = 'a'; s.b= true;
+    int * p = reinterpret_cast<int *> (&s);
+    cout << *p << endl;
+    p++;
+    cout << *p << endl;
+    p++;
+    char * c = reinterpret_cast<char *> (p);
+    cout << *c << endl;
+    p++;
+
+    float a = 3.9f;
+    std::cout << static_cast<int>(a) << std::endl;
+
+    string s1 = "ab";
+    string s2 = "cd";
+
+    string s3 = s1 + s2;
+
+    std::cout << s3 << std:: endl;
+
+    std::cout << log10(99) << std::endl;
+    std::cout << log10(100) << std::endl;
+    std::cout << log10(101) << std::endl;
+}
 // Driver program 
-int main() { 
-
-
-    
-    test12();
+int main() {     
+    test14();
     /*
     int exponent = 100; 
     int base = 20; 
