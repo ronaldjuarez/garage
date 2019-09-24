@@ -262,9 +262,23 @@ void test14(){
     std::cout << log10(100) << std::endl;
     std::cout << log10(101) << std::endl;
 }
+
+void test15(){
+    map<int,int> m;
+    m[15] = 1;
+    m[5] = 3;
+    m[2] = 7;
+    m[4] = 2;
+
+    map<int,int>::iterator it;
+
+    for (it = m.begin(); it != m.end(); it++){
+        cout << it->first << ": " << it->second << endl;
+    }
+}
 // Driver program 
 int main() {     
-    test14();
+    test15();
     /*
     int exponent = 100; 
     int base = 20; 
