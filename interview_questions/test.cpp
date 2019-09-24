@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <set>
 #include <cmath>
+#include "helper.h"
 using namespace std; 
   
 // Maximum number of digits in  
@@ -261,6 +262,15 @@ void test14(){
     std::cout << log10(99) << std::endl;
     std::cout << log10(100) << std::endl;
     std::cout << log10(101) << std::endl;
+}
+
+void test15_helper(const vector<int> &v){
+    v[1] = 4;
+}
+void test15(){
+    vector<int> v{1,2,3};
+    test15_helper(v);
+    print1D(v);
 }
 // Driver program 
 int main() {     
