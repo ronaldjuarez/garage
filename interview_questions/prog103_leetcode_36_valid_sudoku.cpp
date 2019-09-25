@@ -1,53 +1,34 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-
+#include "helper.h"
 using namespace std;
 
-vector<char> getValidNumbers(vector<vector<char>>& board, int row, int col) {
-	vector<char> candidates;
-	if (board[row][col] != '.') return candidates;
-	for (char val = '1'; val <= '9'; val++) {
-		bool collision = false;
-		for (int i = 0; i < 9; i++) {
-			if (board[row][i] == val ||
-				board[i][col] == val ||
-				(board[row - row % 3 + floor(i / 3)][col - col % 3 + i % 3] == val)) {
-				collision = true;
-				break;
-			}
-		}
-		if (!collision)
-			candidates.push_back(val);
+bool isValid(vector<vector<char>>& board, int row, int col) {
+	char currVal = board[row][col];
+	for (int i = 0; i < 9; i++) {
+		if (i != col && board[row][i] == currVal) return false;
+		if (i != row && board[i][col] == currVal) return false;
+		int r = row - row % 3 + floor(i / 3);
+		int c = col - col % 3 + i % 3;
+		if (r != row && c != col && board[r][c] == currVal) return false;
 	}
-	return candidates;
+	return true;;
 }
 
 bool isValidSudoku(vector<vector<char>>& board) {
-	int numrows = board.size();
-	int numcols = board[0].size();
-	int row, col;
-	vector<char> candidates;
-	for (int i = 0; i < numrows * numcols; i++) {
-		int r = i / numcols;
-		int c = i % numcols;
-		if (board[c][r] == '.') {
-			candidates = getValidNumbers(board, r, c);
-			row = r;
-			col = c;
-			break;
+
+	int numRows = board.size();
+	if (numRows == 0) return false;
+	int numCols = board[0].size();
+
+	for ( int i = 0; i < numRows ; i++){
+		for (int j = 0; j < numCols; j++){
+
+			if (board[i][j] != '.' && !isValid(board,i,j)) return false;
 		}
-	}
-
-	if (candidates.size() == 0) return true;
-
-	for (int j = 0; j < candidates.size(); j++) {
-		board[row][col] = candidates[j];
-		if (isValidSudoku(board)) return true;
-		board[row][col] = '.';
-	}
-
-	return false;
+	}	
+	return true;
 }
 
 int main() {
@@ -61,7 +42,8 @@ int main() {
 	board.push_back({ '.','6','.','.','.','.','2','8','.' });
 	board.push_back({ '.','.','.','4','1','9','.','.','5' });
 	board.push_back({ '.','.','.','.','8','.','.','7','9' });
-	vector<vector<char>> board2{ {'8','3','.','.','7','.','.','.','.'},
+	vector<vector<char>> board2{ 
+		    {'8','3','.','.','7','.','.','.','.'},
 			{'6','.','.','1','9','5','.','.','.'},
 			{'.','9','8','.','.','.','.','6','.'},
 			{'8','.','.','.','6','.','.','.','3'},
@@ -145,7 +127,7 @@ function sudokuSolve(board):
 	# whether the board can be solved.  If it can,
 	# we are done.
 	for val in candidates:
-		board{row}{col} = val
+		board[row][col] = val
 		if (sudokuSolve(board)):
 			return true
 		# The tried value val didn't work so restore

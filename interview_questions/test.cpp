@@ -289,9 +289,26 @@ void test16(){
     vector<int> vv;
     cout << vv.size() << endl;
 }
+
+void test17(){
+    vector<int> v1{1,2,3};
+    vector<int> v2{4,5,6};
+
+    cout << &v1 << endl;
+    cout << &v2 << endl;
+
+    v2 = v1;
+
+    cout << &v1 << endl;
+    cout << &v2 << endl;
+    
+    print1D(v1);
+    print1D(v2);
+
+}
 // Driver program 
 int main() {     
-    test16();
+    test17();
     /*
     int exponent = 100; 
     int base = 20; 
