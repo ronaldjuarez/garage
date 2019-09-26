@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -6,7 +5,11 @@
 
 using namespace std;
 
+bool compare(const vector<int> &interval1, const vector<int> &interval2){
+	return interval1[0] < interval2 [0];
+}
 vector<vector<int>> merge(vector<vector<int>>& intervals) {
+	sort(intervals.begin(), intervals.end(), compare);
 	int i = 0, j = 1;
 	int size = intervals.size();
 	vector<vector<int>> ans;
@@ -42,6 +45,7 @@ int main() {
 	vector<vector<int>> vvvvvv{ {1,4},{0,0} };
 	vector<vector<int>> vvvvvvv{ {1,4},{0,2},{3,5} };
 	vector<vector<int>> vvvvvvvv{ {1,5},{0,1} };
+	vector<vector<int>> vvvvvvvvv{ {4,5},{1,4},{0,1} };
 	print2D(merge(v));
 	print2D(merge(vv));
 	print2D(merge(vvv));
@@ -50,5 +54,6 @@ int main() {
 	print2D(merge(vvvvvv));
 	print2D(merge(vvvvvvv));
 	print2D(merge(vvvvvvvv));
+	print2D(merge(vvvvvvvvv));
 	return 0;
 }
