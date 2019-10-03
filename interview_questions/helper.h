@@ -10,7 +10,13 @@ void print1D(const std::vector<int> &v){
     }
     std::cout << std::endl;
 }
-
+void print1D(const std::vector<std::string> &v){
+    int n = v.size();
+    for (auto e:v){
+        std::cout << e << " ";
+    }
+    std::cout << std::endl;
+}
 void print2D(const std::vector<std::vector<std::string> >& m) {
 	int nr = m.size();
 	if (nr == 0) return ;
