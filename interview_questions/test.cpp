@@ -306,9 +306,14 @@ void test17(){
     print1D(v2);
 
 }
+
+void test18(){
+    int a  = 's';
+    std::cout << a << std::endl;
+}
 // Driver program 
 int main() {     
-    test17();
+    test18();
     /*
     int exponent = 100; 
     int base = 20; 

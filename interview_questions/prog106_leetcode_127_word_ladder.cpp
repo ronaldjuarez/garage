@@ -85,19 +85,18 @@ int shortestWordEditPath(const string& source, const string& target, const vecto
 
 int main() 
 {
-    string source = "bit";
-    string target = "dog";
-    vector<string> words {"but", "put", "big", "pot", "pog", "dog", "lot"};
+	string source3 = "hit";
+	string target3 = "lod";
+	vector<string> words3{ "hit", "hot", "lit", "lot", "lid", "lod" };
+	print2D(findLadders(source3, target3, words3));
+	string source = "bit";
+	string target = "dog";
+	vector<string> words{ "but", "put", "big", "pot", "pog", "dog", "lot" };
+	print2D(findLadders(source, target, words));
 
-    cout << shortestWordEditPath(source, target, words) << endl;
-    cout << ladderLength(source, target, words) << endl;
-
-    
-    string source2 = "hit";
-    string target2 = "cog";
-    vector<string> words2 {"hot","dot","dog","lot","log","cog"};
-
-    cout << shortestWordEditPath(source2, target2, words2) << endl;
-    cout << ladderLength(source2, target2, words2) << endl;
+	string source2 = "cot";
+	string target2 = "lit";
+	vector<string> words2{ "hot", "pot", "lot", "pit", "lit" };	
+	print2D(findLadders(source, target, words));
 	return 0;
 }

@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <climits>
+#include <string>
 
 template<typename T>
 void print1D(const std::vector<T> &v){
@@ -10,6 +11,17 @@ void print1D(const std::vector<T> &v){
     }
     std::cout << std::endl;
 }
+void print1D(const std::vector<std::string> &v){
+    int n = v.size();
+    for (auto e:v){
+        std::cout << e << " ";
+    }
+    std::cout << std::endl;
+}
+void print2D(const std::vector<std::vector<std::string> >& m) {
+	int nr = m.size();
+	if (nr == 0) return ;
+	int nc = m[0].size();
 
 template<typename T>
 void print2D(const std::vector<std::vector<T> > &m){
