@@ -83,31 +83,32 @@ vector<string> diffBetweenTwoStrings2(const string& source, const string& target
 
 	print2D(memo);
 
-	int i = 1;
-	int j = 1;
+	int i = sizeSource;
+	int j = sizeTarget;
 	vector<string> ans;
 
-	while (i <= sizeSource && j <= sizeTarget) {
+	while (i >= 1 && j >= 1) {
 		if (source[i-1] == target[j-1]) {
 			ans.push_back(string(1, source[i-1]));
-			i++; j++;
+			i--; j--;
 		}
 		else {
-			if (memo[i + 1][j] <= memo[i][j + 1]) {
-				ans.push_back("-" + string(1, source[i - 1]));
-				i++;
+			if (memo[i][j - 1] <= memo[i - 1][j]  ) {
+				ans.push_back("+" + string(1, target[j - 1]));
+				j--;
 			}
 			else {
-				ans.push_back("+" + string(1, target[j - 1]));
-				j++;
+				ans.push_back("-" + string(1, source[i - 1]));
+				i--;
 			}
 		}
 	}
 
-	while (j <= sizeTarget) {
-		ans.push_back("+" + string(1, target[j - 1]));
-		j++;
+	while (i >= 1) {
+		ans.push_back("-" + string(1, source[i - 1]));
+		i--;
 	}
+	reverse(ans.begin(), ans.end());
 	return ans;
 }
 
@@ -115,7 +116,7 @@ int main()
 {
 	string source = "ABCDEFG";
 	string target = "ABDFFGH";
-	print1D(diffBetweenTwoStrings2(source, target));
+	//print1D(diffBetweenTwoStrings2(source, target));
 
 	print1D(diffBetweenTwoStrings2("AABACC", "BABCAC"));
 	return 0;
