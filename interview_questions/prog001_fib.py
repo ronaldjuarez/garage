@@ -11,13 +11,12 @@ def fib(n):
 def fib2(n):
     if MEMO[n] != None:
         return MEMO[n]
-
     if n == 1 or n == 2:
         result = 1
     else:
-        result = fib2(n-1) + fib2(n-2)
-
-    
+        part_1 = fib2(n-1)
+        part_2 = fib2(n-2)
+        result = part_1 + part_2
     MEMO[n] = result
     return result
     
@@ -66,16 +65,16 @@ def fib5(n):
 
 
 
-n = 100
+n = 4
 MEMO = [None] * (n + 1)
 
 
 t_start = time.time()
 #print (fib(n))
-#print (fib2(n))
+print (fib2(n))
 #print (fib3(n))
 #print (fib4(n))
-print (fib5(n))
+#print (fib5(n))
 t_end = time.time()
 t_elapsed =  t_end - t_start
 

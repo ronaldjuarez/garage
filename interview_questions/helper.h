@@ -2,15 +2,17 @@
 #include <iostream>
 #include <climits>
 
-void print1D(const std::vector<int> &v){
+template<typename T>
+void print1D(const std::vector<T> &v){
     int n = v.size();
-    for (int e:v){
+    for (auto& e:v){
         std::cout << e << " ";
     }
     std::cout << std::endl;
 }
 
-void print2D(const std::vector<std::vector<int> > &m){
+template<typename T>
+void print2D(const std::vector<std::vector<T> > &m){
     int nr = m.size();
     int nc = m[0].size();
 
@@ -20,18 +22,6 @@ void print2D(const std::vector<std::vector<int> > &m){
         }
         std::cout << std::endl;
     }
-}
-
-void print2DChar(const std::vector<std::vector<char> > &m) {
-	int nr = m.size();
-	int nc = m[0].size();
-
-	for (int r = 0; r < nr; r++) {
-		for (int c = 0; c < nc; c++) {
-			std::cout << m[r][c] << "\t";
-		}
-		std::cout << std::endl;
-	}
 }
 
 class Heap {
