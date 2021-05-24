@@ -10,7 +10,7 @@ public:
     void print();
 private:
     void decrease_key(int i,int key); 
-    Heap_Cormen h;
+    Helper::Heap_Cormen h;
     int parent(int i);
 };
 
