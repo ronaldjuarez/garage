@@ -28,12 +28,10 @@ namespace Helper
 
 	template<typename T>
 	void print2D(const std::vector<std::vector<T> > &m){
-		int nr = m.size();
-		int nc = m[0].size();
-
-		for (int r = 0; r < nr ; r++){
-			for(int c = 0; c < nc; c++){
-				std::cout << m[r][c] << "\t";
+		for (const auto& v: m)
+		{
+			for(auto& e: v){
+				std::cout << e << "\t";
 			}
 			std::cout << std::endl;
 		}
