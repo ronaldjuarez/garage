@@ -5,3 +5,5 @@
 *.stackdump
 *.out
 *.obj
+*.ilk
+*.pdb
