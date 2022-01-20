@@ -121,6 +121,16 @@ int pathSum(TreeNode* root, int targetSum)
     return count;
 }
 
+int pathSum2(TreeNode* root, int targetSum) 
+{
+    std::vector<std::vector<int>> allPaths;
+    pathRec(root, allPaths, {});
+    Helper::print2D<int>(allPaths);
+    int count = findPathsforTargetSum(allPaths, targetSum);
+    return count;
+}
+
+
 int main()
 {
     TreeNode* grandchild1 = new TreeNode(3, new TreeNode(3), new TreeNode(-2));
