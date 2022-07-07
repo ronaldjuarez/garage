@@ -285,7 +285,7 @@ void test16_helper(const vector<int> &v ) {
 void test16(){
     vector<int> v{1,2,3};
     test16_helper(v);
-    print1D(v);
+    Helper::print1D(v);
     vector<int> vv;
     cout << vv.size() << endl;
 }
@@ -302,8 +302,8 @@ void test17(){
     cout << &v1 << endl;
     cout << &v2 << endl;
     
-    print1D(v1);
-    print1D(v2);
+    Helper::print1D(v1);
+    Helper::print1D(v2);
 
 }
 
@@ -311,9 +311,32 @@ void test18(){
     int a  = 's';
     std::cout << a << std::endl;
 }
-// Driver program 
+
+void test19()
+{
+    int a = 80;
+
+    double b = log2(static_cast<double>(a));
+
+    std::cout << b << std::endl;
+
+    int c = static_cast<int>(b);
+
+    std::cout << c << std::endl;
+
+    auto d = ceil(b);
+    auto e = static_cast<int>(d);
+
+    std::cout << "d type: " << typeid(d).name() << std::endl;
+    std::cout << "d value: " << d << std::endl;
+
+    std::cout << "e type: " << typeid(e).name() << std::endl;
+    std::cout << "e value: " << e << std::endl;
+}
+
 int main() {     
-    test18();
+    test19();
+    //test18();
     /*
     int exponent = 100; 
     int base = 20; 
