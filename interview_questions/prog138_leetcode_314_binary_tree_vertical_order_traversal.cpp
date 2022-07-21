@@ -1,10 +1,11 @@
 #include <vector>
 #include <cmath>
 #include <unordered_map>
+#include <set>
+#include <queue>
 #include <algorithm>
-#include <iostream>
-#include <climits>
 #include "helper.h"
+#include <iostream>
 
 struct TreeNode
 {
@@ -42,7 +43,7 @@ bool compareOnlyFirst(const std::pair<int, int>& p1, const std::pair<int, int>& 
     return p1.first < p2.first;
 }
 
-std::vector<std::vector<int>> verticalOrder(TreeNode *root)
+std::vector<std::vector<int>> verticalOrder_DFS(TreeNode *root)
 {
     std::vector<std::vector<int>> verticalOrderVector;
 
@@ -81,23 +82,102 @@ std::vector<std::vector<int>> verticalOrder(TreeNode *root)
     return verticalOrderVector;
 }
 
+std::vector<std::vector<int>> verticalOrder(TreeNode* root)
+{
+    if (root == nullptr) return {};
+    int minPos = INT_MAX, maxPos = INT_MIN;
+    std::vector<std::vector<int>> verticalOrderVector;
+    std::unordered_map<int, std::vector<int>> verticalOrderMap;
+    std::queue<std::pair<int, TreeNode*>> q;
+    
+    q.push(std::pair<int, TreeNode*>(0, root));
+
+    while (!q.empty())
+    {
+        std::pair<int, TreeNode*> currentPairNode = q.front(); q.pop();
+        int currPos = currentPairNode.first;
+        auto currNode = currentPairNode.second;
+
+
+        verticalOrderMap[currPos].push_back(currNode->val);
+        minPos = std::min(minPos, currPos);
+        maxPos = std::max(maxPos, currPos);
+        
+        if (currNode->left != nullptr)
+        {
+            q.push(std::pair<int, TreeNode*>(currPos-1, currNode->left));
+        }
+
+        if (currNode->right != nullptr)
+        {
+            q.push(std::pair<int, TreeNode*>(currPos+1, currNode->right));
+        }
+    }
+
+    for (int pos = minPos; pos <= maxPos; pos++)
+    {
+        if(!verticalOrderMap[pos].empty())
+        {
+            verticalOrderVector.push_back(verticalOrderMap[pos]);
+        }
+    }
+   
+    return verticalOrderVector;
+}
+
 int main()
 {
-    TreeNode* leaf1 = new TreeNode(15);
-    TreeNode* leaf2 = new TreeNode(7);
-    TreeNode* leaf3 = new TreeNode(9);
-    TreeNode* node1 = new TreeNode(20, leaf1, leaf2);
-    TreeNode* root = new TreeNode(3,leaf3, node1);
-    
+    TreeNode* leaf2 = new TreeNode(2);
+    TreeNode* leaf5 = new TreeNode(5);
+    TreeNode* leaf4 = new TreeNode(4);
+    TreeNode* leaf7 = new TreeNode(7);
+    TreeNode* node0 = new TreeNode(0, nullptr, leaf2);
+    TreeNode* node1 = new TreeNode(1, leaf5, nullptr);
+    TreeNode* node9 = new TreeNode(9, leaf4, node0);
+    TreeNode* node8 = new TreeNode(8, node1, leaf7);
+    TreeNode* root = new TreeNode(3, node9, node8);
+
     auto result = verticalOrder(root);
-
+    
     Helper::print2D(result);
+    TreeNode* leaf15 = new TreeNode(15);
+    leaf7 = new TreeNode(7);
+    TreeNode* leaf9 = new TreeNode(9);
+    TreeNode* node20 = new TreeNode(20, leaf15, leaf7);
+    root = new TreeNode(3,leaf9, node20);
+    std::cout << "test2" << std::endl;
+    Helper::print2D(verticalOrder(root));
 
+    TreeNode* leaf10_1= new TreeNode(10);
+    TreeNode* leaf11= new TreeNode(11);
+    TreeNode* leaf10_2= new TreeNode(10);
+    leaf9 = new TreeNode(9);
+    leaf7 = new TreeNode(7);
+    
+    TreeNode* node7 = new TreeNode(7, nullptr, leaf10_1);
+    node8 = new TreeNode(8, nullptr, leaf11);
+    node9 = new TreeNode(9, leaf10_1, nullptr);
+
+    TreeNode* node4 = new TreeNode(4, nullptr, node7);
+    TreeNode* node5 = new TreeNode(5, node8, nullptr);
+    TreeNode* node6 = new TreeNode(6, nullptr, node9);
+
+    TreeNode* node2 = new TreeNode(2, node4, node5);
+    TreeNode* node3 = new TreeNode(3, node6, nullptr);
+
+    root = new TreeNode(1, node2, node3);
+    std::cout << "test3" << std::endl;
+    Helper::print2D(verticalOrder(root));
+
+
+    std::cout << "======= CASE 1 ======== " << std::endl;
+    
     TreeNode* root2 = new TreeNode(3, new TreeNode(9, new TreeNode(4), new TreeNode(0)), new TreeNode(8, new TreeNode(1), new TreeNode(7)));
     auto result2 = verticalOrder(root2);
     Helper::print2D(result2);
 
 
+    std::cout << "======= CASE 2 ======== " << std::endl;
     
     TreeNode* leaf2_4 = new TreeNode(4);
     TreeNode* leaf2_0 = new TreeNode(0);
@@ -115,26 +195,4 @@ int main()
     TreeNode* root4_1 = new TreeNode(1, leaf4_2, nullptr);
     Helper::print2D( verticalOrder(root4_1));
 
-
-    std::cout << "======== CASE 4 ======== " << std::endl;
-
-    TreeNode* leaf10_1= new TreeNode(10);
-    TreeNode* leaf11= new TreeNode(11);
-    TreeNode* leaf10_2= new TreeNode(10);
-    TreeNode* leaf9 = new TreeNode(9);
-    TreeNode* leaf7 = new TreeNode(7);
-    
-    TreeNode* node7 = new TreeNode(7, nullptr, leaf10_1);
-    TreeNode* node8 = new TreeNode(8, nullptr, leaf11);
-    TreeNode* node9 = new TreeNode(9, leaf10_1, nullptr);
-
-    TreeNode* node4 = new TreeNode(4, nullptr, node7);
-    TreeNode* node5 = new TreeNode(5, node8, nullptr);
-    TreeNode* node6 = new TreeNode(6, nullptr, node9);
-
-    TreeNode* node2 = new TreeNode(2, node4, node5);
-    TreeNode* node3 = new TreeNode(3, node6, nullptr);
-
-    root = new TreeNode(1, node2, node3);
-    Helper::print2D(verticalOrder(root));
 }
