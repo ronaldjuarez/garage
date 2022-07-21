@@ -14,7 +14,7 @@ struct TreeNode
     TreeNode* right;
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
     TreeNode(int val) : val(val), left(nullptr), right(nullptr) {}
-    TreeNode(int val, TreeNode* leftNode, TreeNode* rightNode) : key(val), left(leftNode), right(rightNode) {}
+    TreeNode(int val, TreeNode* leftNode, TreeNode* rightNode) : val(val), left(leftNode), right(rightNode) {}
 };
 
 void verticalOrderRecursive(
@@ -32,6 +32,7 @@ void verticalOrderRecursive(
 
 std::vector<std::vector<int>> verticalOrder(TreeNode* root)
 {
+    if (root == nullptr) return {};
     std::vector<std::vector<int>> verticalOrderVector;
     std::unordered_map<int, std::vector<int>> verticalOrderMap;
     verticalOrderRecursive(root, verticalOrderVector, 0, verticalOrderMap);
@@ -47,18 +48,19 @@ std::vector<std::vector<int>> verticalOrder(TreeNode* root)
 
         std::cout << std::endl;
     }
+
+    return verticalOrderVector;
 }
 
 std::vector<std::vector<int>> verticalOrder2(TreeNode* root)
 {
-    int MAX_NODES = 100, minPos = INT_MAX, maxPos = INT_MIN;
+    if (root == nulltpr) return {};
+    int minPos = INT_MAX, maxPos = INT_MIN;
     std::vector<std::vector<int>> verticalOrderVector;
     std::unordered_map<int, std::vector<int>> verticalOrderMap;
     std::queue<std::pair<int, TreeNode*>> q;
-    std::set<int> visitedSet;
     
     q.push(std::pair<int, TreeNode*>(0, root));
-    visitedSet.insert(root->val);
 
     while (!q.empty())
     {
@@ -71,16 +73,14 @@ std::vector<std::vector<int>> verticalOrder2(TreeNode* root)
         minPos = std::min(minPos, currPos);
         maxPos = std::max(maxPos, currPos);
         
-        if (currNode->left != nullptr && visitedSet.find(currNode->left->val) != visitedSet.end())
+        if (currNode->left != nullptr)
         {
             q.push(std::pair<int, TreeNode*>(currPos-1, currNode->left));
-            visitedSet.insert(currNode->left->val);
         }
 
-        if (currNode->right != nullptr && currNode->right->val)
+        if (currNode->right != nullptr)
         {
             q.push(std::pair<int, TreeNode*>(currPos+1, currNode->right));
-            visitedSet.insert(currNode->right->val);
         }
     }
 
@@ -110,11 +110,34 @@ int main()
     auto result = verticalOrder2(root);
     
     Helper::print2D(result);
-    leaf1 = new TreeNode(15);
-    leaf2 = new TreeNode(7);
-    leaf3 = new TreeNode(9);
-    node1 = new TreeNode(20, leaf1, leaf2);
-    root = new TreeNode(3,leaf3, node1);
+    TreeNode* leaf15 = new TreeNode(15);
+    leaf7 = new TreeNode(7);
+    TreeNode* leaf9 = new TreeNode(9);
+    TreeNode* node20 = new TreeNode(20, leaf15, leaf7);
+    root = new TreeNode(3,leaf9, node20);
+    std::cout << "test2" << std::endl;
+    Helper::print2D(verticalOrder2(root));
+
+
     
-    verticalOrder(root);
+    TreeNode* leaf10_1= new TreeNode(10);
+    TreeNode* leaf11= new TreeNode(11);
+    TreeNode* leaf10_2= new TreeNode(10);
+    leaf9 = new TreeNode(9);
+    leaf7 = new TreeNode(7);
+    
+    TreeNode* node7 = new TreeNode(7, nullptr, leaf10_1);
+    node8 = new TreeNode(8, nullptr, leaf11);
+    node9 = new TreeNode(9, leaf10_1, nullptr);
+
+    TreeNode* node4 = new TreeNode(4, nullptr, node7);
+    TreeNode* node5 = new TreeNode(5, node8, nullptr);
+    TreeNode* node6 = new TreeNode(6, nullptr, node9);
+
+    TreeNode* node2 = new TreeNode(2, node4, node5);
+    TreeNode* node3 = new TreeNode(3, node6, nullptr);
+
+    root = new TreeNode(1, node2, node3);
+    std::cout << "test3" << std::endl;
+    Helper::print2D(verticalOrder2(root));
 }
