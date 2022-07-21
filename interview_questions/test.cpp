@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <set>
 #include <cmath>
+#include <typeinfo>
 #include "helper.h"
 using namespace std; 
   
@@ -334,8 +335,26 @@ void test19()
     std::cout << "e value: " << e << std::endl;
 }
 
+void test20()
+{
+    std::unordered_map<int, std::vector<int>> randomMap;
+
+    randomMap[1].push_back(2);
+
+    std::unordered_map<int, std::vector<int>>::iterator randomMapIt;
+
+    std::cout << "printing...." << std::endl;
+
+    for(randomMapIt = randomMap.begin(); randomMapIt  != randomMap.end(); randomMapIt++)
+    {
+        std::cout << randomMapIt->first << std::endl;
+    }
+}
+
 int main() {     
-    test19();
+    std::cout << "printing from main...." << std::endl;
+    test20();
+    //test19();
     //test18();
     /*
     int exponent = 100; 

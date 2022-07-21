@@ -5,6 +5,7 @@
 #include <queue>
 #include <algorithm>
 #include "helper.h"
+#include <iostream>
 
 struct TreeNode
 {
@@ -16,7 +17,39 @@ struct TreeNode
     TreeNode(int val, TreeNode* leftNode, TreeNode* rightNode) : key(val), left(leftNode), right(rightNode) {}
 };
 
-std::vector<std::vector<int>> verticalOrder2(TreeNode *root)
+void verticalOrderRecursive(
+    TreeNode* root,
+    std::vector<std::vector<int>>& verticalOrderVector,
+    int pos,
+    std::unordered_map<int, std::vector<int>>& verticalOrderMap)
+{
+    if (root == nullptr) return; 
+    
+    verticalOrderMap[pos].push_back(root->val);
+    verticalOrderRecursive(root->left, verticalOrderVector, pos-1, verticalOrderMap);
+    verticalOrderRecursive(root->right, verticalOrderVector, pos+1, verticalOrderMap);
+}
+
+std::vector<std::vector<int>> verticalOrder(TreeNode* root)
+{
+    std::vector<std::vector<int>> verticalOrderVector;
+    std::unordered_map<int, std::vector<int>> verticalOrderMap;
+    verticalOrderRecursive(root, verticalOrderVector, 0, verticalOrderMap);
+
+    for(auto it = verticalOrderMap.begin(); it != verticalOrderMap.end(); it++)
+    {
+        std::cout << it->first << ": ";
+
+        for( int i = 0 ; i  < it->second.size() ; i++)
+        {
+            std::cout << it->second[i] << " ";
+        }
+
+        std::cout << std::endl;
+    }
+}
+
+std::vector<std::vector<int>> verticalOrder2(TreeNode* root)
 {
     int MAX_NODES = 100, minPos = INT_MAX, maxPos = INT_MIN;
     std::vector<std::vector<int>> verticalOrderVector;
@@ -33,8 +66,8 @@ std::vector<std::vector<int>> verticalOrder2(TreeNode *root)
         int currPos = currentPairNode.first;
         auto currNode = currentPairNode.second;
 
-        verticalOrderMap[currPos].push_back(currNode->val);
 
+        verticalOrderMap[currPos].push_back(currNode->val);
         minPos = std::min(minPos, currPos);
         maxPos = std::max(maxPos, currPos);
         
@@ -77,4 +110,11 @@ int main()
     auto result = verticalOrder2(root);
     
     Helper::print2D(result);
+    leaf1 = new TreeNode(15);
+    leaf2 = new TreeNode(7);
+    leaf3 = new TreeNode(9);
+    node1 = new TreeNode(20, leaf1, leaf2);
+    root = new TreeNode(3,leaf3, node1);
+    
+    verticalOrder(root);
 }
