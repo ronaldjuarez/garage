@@ -367,9 +367,22 @@ void test21()
     }
 }
 
+void test22()
+{
+    std::unordered_map<int, double> map;
+    std::cout << "test 21..." << std::endl;
+    if (map.find(2) != map.end())
+    {
+        std::cout << map[2] << std::endl;
+    }
+    std::cout << "map size..." << std::endl;
+    std::cout << map.size() << std::endl;
+}
+
 int main() {     
     std::cout << "printing from main...." << std::endl;
-    test21();
+    test22();
+    //test21();
     //test20();
     //test19();
     //test18();
