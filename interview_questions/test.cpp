@@ -351,9 +351,26 @@ void test20()
     }
 }
 
+void test21()
+{
+    Node* node1 = new Node(1);
+
+    Node* node1_copy = node1;
+
+    if ( node1 == node1_copy)
+    {
+        std::cout << "they are the same " << std::endl;
+    }
+    else
+    {
+        std::cout << "they are not the same " << std::endl;
+    }
+}
+
 int main() {     
     std::cout << "printing from main...." << std::endl;
-    test20();
+    test21();
+    //test20();
     //test19();
     //test18();
     /*
