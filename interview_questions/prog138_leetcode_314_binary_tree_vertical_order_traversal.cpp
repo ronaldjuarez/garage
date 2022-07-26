@@ -54,7 +54,7 @@ std::vector<std::vector<int>> verticalOrder(TreeNode* root)
 
 std::vector<std::vector<int>> verticalOrder2(TreeNode* root)
 {
-    if (root == nulltpr) return {};
+    if (root == nullptr) return {};
     int minPos = INT_MAX, maxPos = INT_MIN;
     std::vector<std::vector<int>> verticalOrderVector;
     std::unordered_map<int, std::vector<int>> verticalOrderMap;
