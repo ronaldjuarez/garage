@@ -9,6 +9,7 @@
 #include <set>
 #include <cmath>
 #include <typeinfo>
+#include <random>
 #include "helper.h"
 using namespace std; 
   
@@ -379,9 +380,38 @@ void test22()
     std::cout << map.size() << std::endl;
 }
 
+void test23()
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::map<int, int> hist;
+    std::uniform_int_distribution<int> dist(0,9);
+
+    for (int n = 0 ; n < 20000; n++)
+    {
+        hist[dist(gen)]++;
+    }
+
+    for (auto p: hist)
+    {
+        std::cout << p.first << ": " << std::string(p.second/100,'*') << std::endl;
+    }
+}
+
+void test24()
+{
+    std::vector<int> testVector {1,2,3,4,5};
+    std::vector<int>::iterator beginIt = testVector.begin();
+    std::vector<int>::iterator endIt = testVector.end();
+
+    std::cout << "Distance: " << std::distance(beginIt, endIt);
+}
+
 int main() {     
     std::cout << "printing from main...." << std::endl;
-    test22();
+    test24();
+    //test23();
+    //test22();
     //test21();
     //test20();
     //test19();
