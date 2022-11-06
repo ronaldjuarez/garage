@@ -88,6 +88,18 @@ public:
 
         return canCross_recursive(stonesMap, memo, 0 /*curr pos*/, 1 /*jump*/, found);
     }
+
+    bool canCross2(std::vector<int>& stones)
+    {
+        int N = stones.size();
+
+        // dp[N][N+1] 
+        // dp[i][j] : at stone ith , the frog can or not make jump of size j
+        std::vector<std::vector<bool>> dp(N,std::vector<bool>(N+1, false))
+        dp[0][1] = false;
+
+        
+    }
 };
 
 int main()
